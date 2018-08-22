@@ -15,7 +15,7 @@ class TestRumanArabicConverter:
         with pytest.raises(ValueError):
             self.conv.arabic2roman(4000)
 
-    def test_arabic_to_roman_main(self):
+    def test_arabic_to_roman_simple(self):
         assert(self.conv.arabic2roman(1)=='I')
         assert(self.conv.arabic2roman(5)=='V')
         assert(self.conv.arabic2roman(10)=='X')
@@ -31,6 +31,12 @@ class TestRumanArabicConverter:
         assert(self.conv.arabic2roman(400)=='CD')
         assert(self.conv.arabic2roman(900)=='CM')
 
+    def test_arabic_to_roman(self):
+        assert(self.conv.arabic2roman(3999)=='MMMCMXCIX')
+        assert(self.conv.arabic2roman(14)=='XIV')
+        assert(self.conv.arabic2roman(59)=='LIX')
+        
+
     def test_roman_to_arabic_exceptions(self):
         with pytest.raises(TypeError):
             self.conv.roman2arabic(1)
@@ -44,7 +50,7 @@ class TestRumanArabicConverter:
         with pytest.raises(ValueError):
             self.conv.roman2arabic('XXD')
 
-    def test_roman_to_arabic_main(self):
+    def test_roman_to_arabic_simple(self):
         assert(self.conv.roman2arabic('I')==1)
         assert(self.conv.roman2arabic('V')==5)
         assert(self.conv.roman2arabic('X')==10)
@@ -60,7 +66,7 @@ class TestRumanArabicConverter:
         assert(self.conv.roman2arabic('CD')==400)
         assert(self.conv.roman2arabic('CM')==900)
 
-    def test_roman_to_arabic_main_lower_case(self):
+    def test_roman_to_arabic_simple_lower_case(self):
         assert(self.conv.roman2arabic('i')==1)
         assert(self.conv.roman2arabic('v')==5)
         assert(self.conv.roman2arabic('x')==10)
@@ -75,6 +81,16 @@ class TestRumanArabicConverter:
         assert(self.conv.roman2arabic('xc')==90)
         assert(self.conv.roman2arabic('cd')==400)
         assert(self.conv.roman2arabic('cm')==900)
+
+    def test_roman_to_arabic(self):
+        assert(self.conv.roman2arabic('MMMCMXCIX')==3999)
+        assert(self.conv.roman2arabic('mmmcmxcix')==3999)
+        assert(self.conv.roman2arabic('XIV')==14)
+        assert(self.conv.roman2arabic('LIX')==59)
+
+    def test_all_range(self):
+        for i in range(1,3999):
+            assert(self.conv.roman2arabic(self.conv.arabic2roman(i)) == i)
 
     def test__test_arabic(self):
         assert(self.conv._test_arabic(1)==True)
