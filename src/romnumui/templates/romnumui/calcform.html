@@ -1,0 +1,32 @@
+{% extends "romnumui/wrapper.html" %}
+{% load staticfiles %}
+
+{% block script %}
+	<script src="{% static '/romnumui/form.js' %}"></script>
+{% endblock %}
+
+{% block css %} 
+	<link rel="stylesheet" type="text/css" href="{% static '/romnumui/form.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron text-center">
+	<div class="container">
+		<h1>Конвертер римских и арабских чисел</h1>
+		<p>Введите число в римской или арабской системи исчисления. Нажмите кнопку и получите результат.</p>
+		<p>Можно вводить несколько чисел в разных системах исчисления, разделённых пробелами, новыми строками или запятыми.</p>
+
+		<center>
+			<table style="width:80%">
+				<tr>
+					<th style="width:40%"><textarea id="Input" name="Input" rows="10" placeholder="Ввод"></textarea></th>
+					<th><center><button onclick="DoConvert()"> => </button></center></th>
+					<th style="width:40%"><textarea id="Output" name="Output" rows="10" placeholder="Результат"></textarea></th>
+				</tr>
+			</table>
+		</center>
+	</div>
+</div>
+	
+{% endblock %}

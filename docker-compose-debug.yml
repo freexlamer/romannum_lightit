@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+
+  web:
+    env_file: django.env
+    environment:
+      - DEBUG_MODE=True
+      - DJANGO_ALLOWED_HOST=*
+    build:
+      context: .
+      dockerfile: Dockerfile-debug
+    volumes:
+      - ./src:/src
+      - /static:/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    links: 
+      - db
+    
