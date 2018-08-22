@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/src
+      - ./config/nginx:/etc/nginx/conf.d
+      - /static:/static
+    depends_on:
+      - web
+    links:
+      - web
+
+  web:
+    env_file: django.env
+    build: .
+    volumes:
+      - ./src:/src
+      - /static:/static
+    expose:
+      - "8000"
+    depends_on:
+      - db
+    links: 
+      - db
+    
