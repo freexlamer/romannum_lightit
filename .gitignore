@@ -107,3 +107,6 @@ Pipfile.lock
 
 # Databases
 *.db
+
+# py.test
+.pytest_cache/

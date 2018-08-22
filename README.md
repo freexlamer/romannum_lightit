@@ -8,7 +8,7 @@
 
 ### Запуск:
 * `docker-compose up -d`
-* Открыть в браузере `http://localhost:8000/`
+* Открыть в браузере http://localhost:8000/
 
 ### Завершение работы:
 * `docker-compose down`
@@ -24,12 +24,13 @@
 * `pip3 install pipenv`
 * `pipenv --python 3` (в системе должен быть установлен python версии 3, но ниже 3.7)
 * `pipenv install`
+* `pipenv run pytest`
 * `pipenv run manage.py migrate`
 
 ### Запуск:
 * `cd src`
 * `pipenv run python manage.py runserver 0.0.0:8000`
-* Открыть в браузере `http://localhost:8000/`
+* Открыть в браузере http://localhost:8000/
 
 ### Завершение работы:
 * CTRL-C
