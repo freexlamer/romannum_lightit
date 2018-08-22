@@ -9,7 +9,7 @@ WORKDIR /src
 ADD ./src /src
 
 RUN pip3 install -r requirements.txt
-RUN pytest
+#RUN pytest
 
-CMD pytest && python3 manage.py collectstatic --no-input; python3 manage.py migrate; ./wait-for-it.sh -t 60 db:5432 -- gunicorn romnum.wsgi -b 0.0.0.0:8000
+CMD pytest && python3 manage.py makemigrations; python3 manage.py migrate; python3 manage.py collectstatic --no-input; ./wait-for-it.sh -t 60 db:5432 -- gunicorn romnum.wsgi -b 0.0.0.0:8000
 

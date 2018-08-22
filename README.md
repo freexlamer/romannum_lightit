@@ -8,7 +8,7 @@
 
 ### Запуск:
 * `docker-compose up -d`
-* Открыть в браузере `http://localhost:8000/`
+* Открыть в браузере http://localhost:8000/
 
 ### Завершение работы:
 * `docker-compose down`
@@ -30,7 +30,7 @@
 ### Запуск:
 * `cd src`
 * `pipenv run python manage.py runserver 0.0.0:8000`
-* Открыть в браузере `http://localhost:8000/`
+* Открыть в браузере http://localhost:8000/
 
 ### Завершение работы:
 * CTRL-C

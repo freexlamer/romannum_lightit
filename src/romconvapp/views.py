@@ -6,7 +6,7 @@ import json
 from romarabconv import RumanArabicConverter
 
 @api_view(['POST'])
-def task_list(request):
+def convert(request):
     conv = RumanArabicConverter()
     if request.method == 'POST':
         if 'input' in request.data:
