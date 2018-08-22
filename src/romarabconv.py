@@ -123,7 +123,7 @@ class RumanArabicConverter:
         tmp = []
 
         for i in str(data).splitlines():
-            i = i.replace(',', ' ').replace('.', ' ').replace(';', ' ')
+            i = i.replace(';', ' ')
             tmp.extend(i.split())
 
         for i in tmp:
@@ -132,8 +132,5 @@ class RumanArabicConverter:
 
             except ValueError as e:
                 result.append('ValueError in `%s`. Error message is: %s'%(str(i),str(e)))
-
-            except TypeError:
-                result.append('TypeError in `%s`.'%str(i))
 
         return '\n'.join(result)
